@@ -1,0 +1,47 @@
+{
+    "name": "grunt-ppem",
+    "version": "0.8.1-alpha.1",
+    "description": "Grunt plugin for PPem",
+    "homepage": "https://github.com/diegovilar/grunt-ppem",
+    "main": "Gruntfile.js",
+    "bin": {
+        "grunt-ppem": "bin/grunt-ppem"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/diegovilar/grunt-ppem.git"
+    },
+    "dependencies": {
+        "ppem": "~0.8.1-alpha"
+    },
+    "peerDependencies": {
+        "grunt": "0.4.x"
+    },
+    "devDependencies": {
+        "grunt": "0.4.x",
+        "grunt-contrib-jshint": "~0.6.0"
+    },
+    "keywords": [
+        "pp",
+        "ppem",
+        "preprocess",
+        "preprocessor",
+        "processor",
+        "pre-process",
+        "pre-processor",
+        "grunt",
+        "grunt-plugin",
+        "plugin"
+    ],
+    "author": {
+        "name": "Diego Vilar",
+        "email": "diegovilar@gmail.com"
+    },
+    "license": "Apache License, Version 2.0",
+    "bugs": {
+        "url": "https://github.com/diegovilar/grunt-ppem/issues"
+    }
+}
