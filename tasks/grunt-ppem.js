@@ -60,10 +60,16 @@ module.exports = function (grunt) {
                         processMethod = 'processClike';
                 }
 
-                grunt.log.writeln("[ppem] Processing " + src + " => " + f.dest + ' using ' + processMethod);
+                options.verbose && grunt.log.writeln("[ppem] Processing " + src + ' using ' + processMethod);
                 var processedCode = ppem[processMethod](sourceCode);
 
                 if (processedCode !== null) {
+                    if (src == f.dest) {
+                        grunt.log.writeln("[ppem] " + src + ' preprocessed using ' + processMethod);
+                    }
+                    else {
+                        grunt.log.writeln("[ppem] " + src + ' preprocessed using ' + processMethod + ' and saved to ' + f.dest);
+                    }
                     grunt.file.write(f.dest, processedCode);
                 }
             }
