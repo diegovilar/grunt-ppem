@@ -14,8 +14,8 @@ module.exports = function (grunt) {
 
         var options = {
             verbose : taskOptions.verbose,
-            baseDirOrIncludes : taskOptions.baseDirOrIncludes,
-            errorSourceAhead : taskOptions.errorSourceAhead
+            baseDir : taskOptions.baseDir,
+            includes : taskOptions.includes
         };
         var globalDefines = taskOptions.defines || {};
 
