@@ -1,6 +1,6 @@
 {
     "name": "grunt-ppem",
-    "version": "0.8.1-alpha.1",
+    "version": "0.8.1-alpha.6",
     "description": "Grunt plugin for PPem",
     "homepage": "https://github.com/diegovilar/grunt-ppem",
     "main": "Gruntfile.js",
@@ -15,7 +15,8 @@
         "url": "https://github.com/diegovilar/grunt-ppem.git"
     },
     "dependencies": {
-        "ppem": "~0.8.1-alpha"
+        "ppem": "~0.8.1-alpha",
+        "clone": "~0.1.11"
     },
     "peerDependencies": {
         "grunt": "0.4.x"

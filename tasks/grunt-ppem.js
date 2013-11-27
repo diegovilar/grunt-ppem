@@ -2,7 +2,8 @@ module.exports = function (grunt) {
     "use strict";
 
     var PPem = require("ppem"),
-        path = require('path');
+        path = require('path'),
+        clone = require("clone");
 
     function log(msg) {
         console.log('' + msg);
@@ -15,7 +16,7 @@ module.exports = function (grunt) {
         var options = {
             verbose : taskOptions.verbose,
             baseDir : taskOptions.baseDir,
-            includes : taskOptions.includes
+            includes : taskOptions.includes || []
         };
         var globalDefines = taskOptions.defines || {};
 
@@ -43,6 +44,7 @@ module.exports = function (grunt) {
                 var sourceCode = grunt.file.read("./" + src);
                 var processMethod;
                 var extname = path.extname(src).replace('.', '').toLowerCase();
+                var currentFileIncludes = [path.dirname(src) + ''];
 
                 switch (extname) {
                     case 'xml':
@@ -60,10 +62,16 @@ module.exports = function (grunt) {
                         processMethod = 'processClike';
                 }
 
-                grunt.log.writeln("[ppem] Processing " + src + " => " + f.dest + ' using ' + processMethod);
-                var processedCode = ppem[processMethod](sourceCode);
+                options.verbose && grunt.log.writeln("[ppem] Processing " + src + ' using ' + processMethod);
+                var processedCode = ppem[processMethod](sourceCode, null, currentFileIncludes);
 
                 if (processedCode !== null) {
+                    if (src == f.dest) {
+                        grunt.log.writeln("[ppem] " + src + ' preprocessed using ' + processMethod);
+                    }
+                    else {
+                        grunt.log.writeln("[ppem] " + src + ' preprocessed using ' + processMethod + ' and saved to ' + f.dest);
+                    }
                     grunt.file.write(f.dest, processedCode);
                 }
             }
